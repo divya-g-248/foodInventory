@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #fff;">
+ <div class="login">
+	<h1>Restaurant Inventory Forecasting</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="item" placeholder="Item" required="required" />
+        <input type="int" name="bought" placeholder="Pounds bought" required="required" />
+		<input type="int" name="thrown" placeholder="Pounds thrown away" required="required" />
+		<input type="int" name="deficit" placeholder="Pounds deficit" required="required" />
+		<input type="int" name="customers" placeholder="# of customers (week)" required="required" />
+		<input type="text" name="season" placeholder="Season" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict inventory for next week</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
